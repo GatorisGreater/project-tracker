@@ -31,9 +31,9 @@ class FooterForm extends React.Component {
 			<div className="footer">
 				<form className="footer-form" onSubmit={this.submitGoal}>
 					<p>{this.props.currentGoal}</p>
-					<label htmlFor="form-text">Enter your goal here:</label>
-					<input type="text" id="form-text" placeholder="Your Goal" ref="input" required />
-					<input type="submit" name="submit step" value="Enter Goal"/>
+					<label htmlFor="form-text">Project Name</label>
+					<input type="text" id="form-text" placeholder="Amazing App Name" ref="input" required />
+					<input type="submit" name="submit step" value="Track Project"/>
 				</form>
 				<select className="footer-dropdown">
 				  {goalsDropDown}

@@ -3,14 +3,13 @@ const  express = require('express');
 //const HOST = process.env.HOST;
 const PORT = process.env.PORT || 8080;
 const mongoose = require('mongoose');
-const {Goal} = require('./models');
+const {Project} = require('./models');
 var bodyParser = require('body-parser');
 const DATABASE_URL = process.env.DATABASE_URL ||
                      global.DATABASE_URL ||
-                     'mongodb://localhost/goalzapp';
+                     'mongodb://localhost/project-tracker';
 
 console.log(`Server running in ${process.env.NODE_ENV} mode`);
-
 
 const app = express();
 var jsonParser = bodyParser.json()
@@ -19,13 +18,13 @@ app.use(express.static(process.env.CLIENT_PATH));
 
 mongoose.Promise = global.Promise;
 
-app.get('/goal', (req, res) => {
+app.get('/project-tracker', (req, res) => {
 
-  Goal
+  Project
       .find()
       .exec()
-      .then(goals => {
-        res.json(goals);
+      .then(projects => {
+        res.json(projects);
       })
       .catch(err => {
         console.error(err);
@@ -33,25 +32,34 @@ app.get('/goal', (req, res) => {
       })
 });
 
-app.put('/goal/:id', jsonParser, (req, res) => {
-  console.log("req body steps " + req.body.steps);
-  let updatedSteps = req.body.steps; 
-  let update = {
-    "steps": updatedSteps
-  };  
-  Goal
-  .findByIdAndUpdate(req.params.id, {$set: update}, {new: true})
-  .exec()
-  .then(updatedGoal => res.status(201).json(updatedGoal))
-  .catch(err => res.status(500).json({message: 'your update request was unsuccessful'}));
-});
+// WIP - PUT Endpoint
 
-app.post('/goal', jsonParser, function(req, res) {
+// app.put('/project/:id', jsonParser, (req, res) => {
+//   console.log("req body steps " + req.body.steps);
+//   let updatedSteps = req.body.steps; 
+//   let update = {
+//     "steps": updatedSteps
+//   };  
+//   Goal
+//   .findByIdAndUpdate(req.params.id, {$set: update}, {new: true})
+//   .exec()
+//   .then(updatedGoal => res.status(201).json(updatedGoal))
+//   .catch(err => res.status(500).json({message: 'your update request was unsuccessful'}));
+// });
+
+app.post('/project-tracker', jsonParser, function(req, res) {
     console.log(req.body);
     console.error(req.body);
-     Goal.create({
-        goal: req.body.goal
-    }, function(err, item) {
+     Project
+      .create({
+      name: req.body.name,
+      user: req.body.user,
+      story: req.body.story,
+      tools: req.body.tools,
+      status: req.body.status,
+      improvements: req.body.improvements
+      }, 
+      function(err, item) {
         if (err) {
           console.log(err);
             return res.status(500).json({
@@ -59,11 +67,8 @@ app.post('/goal', jsonParser, function(req, res) {
             });
         }
         res.status(201).json(item);
-    });
+      });
 });
-
-
-
 
 let server;
 function runServer() {

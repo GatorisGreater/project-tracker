@@ -8,7 +8,7 @@ function Header() {
     <div className="Header">
       <header>
         <h1>
-          GoalzApp
+          Project Tracker
         </h1>
       </header>
     </div>

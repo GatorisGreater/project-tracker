@@ -1,12 +1,14 @@
 const  mongoose = require('mongoose');
 
-const goalSchema = mongoose.Schema({
-    goal: {type: String, required: true},
-    steps:{type: Array}
+const projectSchema = mongoose.Schema({
+    name: {type: String, required: true},
+    user: {type: String},
+    story: {type: String},
+    tools: {type: Array},
+    status: {type: String},
+    improvements: {type: String}
 });
 
+const Project = mongoose.model('Project', projectSchema);
 
-const Goal = mongoose.model('Goal', goalSchema);
-
-
-module.exports = {Goal};
+module.exports = {Project};
