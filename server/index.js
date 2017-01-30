@@ -52,7 +52,7 @@ app.post('/project-tracker', jsonParser, function(req, res) {
     console.error(req.body);
      Project
       .create({
-      name: req.body.name,
+      name: req.body.project,
       user: req.body.user,
       story: req.body.story,
       tools: req.body.tools,

@@ -6,7 +6,7 @@ const projectSchema = mongoose.Schema({
     story: {type: String},
     tools: {type: Array},
     status: {type: String},
-    improvements: {type: String}
+    improvements: {type: Array}
 });
 
 const Project = mongoose.model('Project', projectSchema);

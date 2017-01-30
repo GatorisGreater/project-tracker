@@ -1,16 +1,21 @@
 import {connect} from 'react-redux';
 import React from 'react';
+
 import Header from './header';
-import ListForm from './list-form';
-import FooterForm from './footer-form';
+
+import ProjectForm from './project-form';
+import StoryForm from './story-form';
+import ToolsForm from './tools-form';
+
 
 function App() {
   return(
 
     <div className="app">
-      <Header />
-      <ListForm />
-      <FooterForm />
+      	<Header />
+    	<ProjectForm />
+      	<StoryForm />
+      	<ToolsForm />
     </div>
 )}
 

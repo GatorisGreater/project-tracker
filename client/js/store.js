@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 
 import * as reducers from './reducers/reducers';
 
-const store = createStore(reducers.goalReducer, applyMiddleware(thunk));
+const store = createStore(reducers.projectReducer, applyMiddleware(thunk));
 
 export default store;
 

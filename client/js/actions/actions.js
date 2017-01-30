@@ -1,21 +1,20 @@
 import 'isomorphic-fetch';
 
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const fetchSuccess = (goals) => ({
+export const fetchSuccess = (projects) => ({
     type: FETCH_SUCCESS,
-    goals
+    projects
 });
 
 export const FETCH_ERROR = 'FETCH_ERROR';
-export const fetchError = (goals, error) => ({
+export const fetchError = (projects, error) => ({
     type: FETCH_ERROR,
-    goals,
+    projects,
     error
 });
 
-export const fetchGoals = goals => dispatch => {
-    const url = `/goal`;
-    console.log("goals" + goals);
+export const fetchProjects = projects => dispatch => {
+    const url = `/project-tracker`;
     return fetch(url).then(response => {
         if (!response.ok) {
             const error = new Error(response.statusText)
@@ -25,7 +24,6 @@ export const fetchGoals = goals => dispatch => {
         return response.json();
     })
     .then(data => {
-    	console.log(data);
         dispatch(fetchSuccess(data));
     })
     .catch(error =>
@@ -34,25 +32,25 @@ export const fetchGoals = goals => dispatch => {
 };
 
 
-export const PUT_STEP_SUCCESS = 'PUT_STEP_SUCCESS';
-export const putStepSuccess = (step) => ({
-	type: PUT_STEP_SUCCESS,
-	step
+export const PUT_TOOL_SUCCESS = 'PUT_TOOL_SUCCESS';
+export const putToolSuccess = (tool) => ({
+	type: PUT_TOOL_SUCCESS,
+	tool
 });
 
-export const PUT_STEP_ERROR = 'PUT_STEP_ERROR';
-export const putStepError = (step, error) => ({
-	type: PUT_STEP_ERROR,
-	step,
+export const PUT_TOOL_ERROR = 'PUT_TOOL_ERROR';
+export const putToolError = (tool, error) => ({
+	type: PUT_TOOL_ERROR,
+	tool,
 	error
 });
 
-export const putStep = step => (dispatch, getState) => {
+export const putTool = tool => (dispatch, getState) => {
 	const state = getState();
-	const steps = state.currentGoalSteps.concat(step);
-	console.log(steps);
-    const url = `/goal/${state.currentGoalId}`
-    return fetch(url, {method:'PUT', body:JSON.stringify({steps}), 
+	const tools = state.currentProjectTools.concat(tool);
+	console.log(tools);
+    const url = `/project-tracker/${state.currentProjectId}`
+    return fetch(url, {method:'PUT', body:JSON.stringify({tools}), 
         headers: {'Accept': 'application/json', 'Content-Type': 'application/json' },}).then(response => {
         	console.log(response);
       if (!response.ok){
@@ -67,28 +65,28 @@ export const putStep = step => (dispatch, getState) => {
     	// console.log(step);
      //  	data.step = step;
       	console.log(data);
-       dispatch(putStepSuccess(data))
+       dispatch(putToolSuccess(data))
      })
      .catch(error =>
-      dispatch(putStepError(error))
+      dispatch(putToolError(error))
     );
 };
 
 export const POST_SUCCESS = 'POST_SUCCESS';
-export const postSuccess = (goal) => ({
+export const postSuccess = (project) => ({
 	type: POST_SUCCESS,
-	goal
+	project
 });
 
 export const POST_ERROR = 'POST_ERROR';
-export const postError = (goal, error) => ({
+export const postError = (project, error) => ({
 	type: POST_ERROR,
-	goal,
+	project,
 	error
 });
 
-export const postGoals = goal => dispatch => {
-	return fetch('/goal', {method: 'POST', body:JSON.stringify({goal}),
+export const trackProject = project => dispatch => {
+	return fetch('/project-tracker', {method: 'POST', body:JSON.stringify({project}),
 			headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },}).then(response => {
 		console.log(response);
 		if (!response.ok) {
