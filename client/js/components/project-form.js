@@ -23,22 +23,14 @@ class ProjectForm extends React.Component {
 
 	render() {
 
-		const projectDropDown = this.props.projectHistory.map((project, index) => {
-			return <option value={index} key={index}>{project}</option>
-		});
-
 		return (
-			<div className="project">
-				<select className="project-dropdown">
-				  {projectDropDown}
-				</select>				
+			
 				<form className="project-form" onSubmit={this.trackProject}>
 					<p>{this.props.currentProject}</p>
 					<label htmlFor="project-name">Project Name: </label>
 					<input type="text" id="project-name" placeholder="Amazing App Name" ref="input" required />
 					<input type="submit" name="submit project" value="Track Project"/>
 				</form>
-			</div>
 		)
 	}
 }
@@ -46,7 +38,6 @@ class ProjectForm extends React.Component {
 const mapStateToProps = (state, props) => {
 	return {
 		currentProject: state.currentProject,
-		projectHistory: state.projectHistory
 	}
 }
 
