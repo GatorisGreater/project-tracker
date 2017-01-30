@@ -32,6 +32,19 @@ app.get('/project-tracker', (req, res) => {
       })
 });
 
+app.get('/project-tracker/:id', (req, res) => {
+  Project
+    .findById(req.params.id)
+    .exec()
+    .then(project => {
+      res.json(project);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went wrong'});
+    })
+});
+
 app.put('/project-tracker/:id', jsonParser, (req, res) => {
   let update = {};
   let updateableFields = ['user', 'story', 'tools', 'status', 'improvements'];

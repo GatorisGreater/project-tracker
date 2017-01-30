@@ -6,6 +6,12 @@ import * as actions from '../actions/actions';
 class ProjectDropDown extends React.Component {
 	constructor(props) {
 		super(props);
+		this.fetchSingleProject = this.fetchSingleProject.bind(this);
+	}
+
+	fetchSingleProject(event) {
+		event.preventDefault();
+		this.props.dispatch(actions.fetchSingleProject(this.refs.input.value));
 	}
 
 	componentDidMount() {
@@ -21,7 +27,7 @@ class ProjectDropDown extends React.Component {
 
 
 		return (
-			<select className="project-dropdown">
+			<select className="project-dropdown" onChange={this.fetchSingleProject}>
 			{projectDropDown}
 			</select>
 		)

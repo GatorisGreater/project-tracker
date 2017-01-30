@@ -1,5 +1,41 @@
 import 'isomorphic-fetch';
 
+///////////// READ/FETCH A SINGLE PROJECT OBJECT ACTIONS AND CREATORS
+
+export const FETCH_SINGLE_SUCCESS = 'FETCH_SINGLE_SUCCESS';
+export const fetchSingleSuccess = (project) => ({
+    type: FETCH_SINGLE_SUCCESS,
+    project
+});
+
+export const FETCH_ALL_ERROR = 'FETCH_ALL_ERROR';
+export const fetchAllError = (projects, error) => ({
+    type: FETCH_ALL_ERROR,
+    projects,
+    error
+});
+
+export const fetchAllProjects = projects => dispatch => {
+    const url = `/project-tracker`;
+    return fetch(url).then(response => {
+        if (!response.ok) {
+            const error = new Error(response.statusText)
+            error.response = response
+            throw error;
+        }
+        return response.json();
+    })
+    .then(data => {
+        dispatch(fetchAllSuccess(data));
+    })
+    .catch(error =>
+        dispatch(fetchAllError(error))
+    );
+};
+
+
+///////////// PUT STORY/UPDATE PROJECT OBJECT ACTIONS AND CREATORS
+
 export const PUT_STORY_SUCCESS = 'PUT_STORY_SUCCESS';
 export const putStorySuccess = (story) => ({
     type: PUT_STORY_SUCCESS,
@@ -33,6 +69,8 @@ export const putStory = story => (dispatch, getState) => {
     );
 };
 
+///////////// READ/FETCH ALL PROJECT OBJECT ACTIONS AND CREATORS
+
 export const FETCH_ALL_SUCCESS = 'FETCH_ALL_SUCCESS';
 export const fetchAllSuccess = (projects) => ({
     type: FETCH_ALL_SUCCESS,
@@ -64,6 +102,7 @@ export const fetchAllProjects = projects => dispatch => {
     );
 };
 
+///////////// PUT TOOL/UPDATE PROJECT OBJECT ACTIONS AND CREATORS
 
 export const PUT_TOOL_SUCCESS = 'PUT_TOOL_SUCCESS';
 export const putToolSuccess = (tool) => ({
@@ -99,6 +138,8 @@ export const putTool = tool => (dispatch, getState) => {
       dispatch(putToolError(error))
     );
 };
+
+///////////// POST NEW PROJECT "TRACK PROJECT" ACTIONS AND CREATORS
 
 export const POST_SUCCESS = 'POST_SUCCESS';
 export const postSuccess = (project) => ({
