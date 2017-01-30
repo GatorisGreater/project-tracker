@@ -36,9 +36,6 @@ export const projectReducer = (state, action) => {
 	}
 	if (action.type === actions.FETCH_SINGLE_SUCCESS) {
 		console.log(action);
-		// let tool = action.tool.tools.slice(-1)[0];
-		// state = Object.assign({}, state, {currentProjectTools: state.currentProjectTools.concat(tool)
-		// });
 		let name = action.project.name;
 		let story = action.project.story;
 		let tools = action.project.tools;

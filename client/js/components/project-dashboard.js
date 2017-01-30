@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import * as actions from '../actions/actions';
 
-class ProjectDropDown extends React.Component {
+class ProjectDashboard extends React.Component {
 	constructor(props) {
 		super(props);
 		this.fetchSingleProject = this.fetchSingleProject.bind(this);
@@ -48,4 +48,4 @@ const mapStateToProps = (state, props) => {
 	}
 }
 
-export default connect(mapStateToProps)(ProjectDropDown);
+export default connect(mapStateToProps)(ProjectDashboard);

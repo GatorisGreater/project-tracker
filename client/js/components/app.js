@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import React from 'react';
 
 import Header from './header';
-import ProjectDropDown from './project-dropdown';
+import ProjectDashboard from './project-dashboard';
 
 import ProjectForm from './project-form';
 import StoryForm from './story-form';
@@ -14,7 +14,7 @@ function App() {
 
     <div className="app">
       	<Header />
-      	<ProjectDropDown />
+      	<ProjectDashboard />
     	<ProjectForm />
       	<StoryForm />
       	<ToolsForm />
