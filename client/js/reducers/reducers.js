@@ -5,7 +5,11 @@ const initialState = {
 	currentProjectId: '',
 	currentProjectStory: '',	
 	currentProjectTools: [],
-	projectHistory: []
+	projectNameHistory: [],
+	projectIdHistory: [],
+	selectedProject: '',
+	selectedProjectStory: '',	
+	selectedProjectTools: [],
 };
 
 export const projectReducer = (state, action) => {
@@ -30,12 +34,28 @@ export const projectReducer = (state, action) => {
 		});
 		return state;
 	}
+	if (action.type === actions.FETCH_SINGLE_SUCCESS) {
+		console.log(action);
+		// let tool = action.tool.tools.slice(-1)[0];
+		// state = Object.assign({}, state, {currentProjectTools: state.currentProjectTools.concat(tool)
+		// });
+		let name = action.project.name;
+		let story = action.project.story;
+		let tools = action.project.tools;
+		state = Object.assign({}, state, {selectedProject: name}, {selectedProjectStory: story}, {selectedProjectTools: tools
+		});
+		console.log(state);
+		return state;
+	}
 	if (action.type === actions.FETCH_ALL_SUCCESS) {
-	 	let projectsArray = [];
+	 	let projectNamesArray = [];
+	 	let projectIdArray = [];
 	 	for (var i = 0; i < action.projects.length; i++) {
-	 		projectsArray[i] = action.projects[i].name;
+	 		projectNamesArray[i] = action.projects[i].name;
+	 		projectIdArray[i] = action.projects[i]._id;
 	 	}
-		state = Object.assign({}, state, {projectHistory: state.projectHistory.concat(projectsArray)
+		state = Object.assign({}, state, {projectNameHistory: state.projectNameHistory.concat(projectNamesArray)
+		}, {projectIdHistory: state.projectIdHistory.concat(projectIdArray)
 		});
 		return state;
 	}	

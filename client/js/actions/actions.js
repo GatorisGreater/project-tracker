@@ -8,15 +8,18 @@ export const fetchSingleSuccess = (project) => ({
     project
 });
 
-export const FETCH_ALL_ERROR = 'FETCH_ALL_ERROR';
-export const fetchAllError = (projects, error) => ({
+export const FETCH_SINGLE_ERROR = 'FETCH_SINGLE_ERROR';
+export const fetchSingleError = (project, error) => ({
     type: FETCH_ALL_ERROR,
-    projects,
+    project,
     error
 });
 
-export const fetchAllProjects = projects => dispatch => {
-    const url = `/project-tracker`;
+export const fetchSingleProject = project => (dispatch, getState) => {
+    console.log(project);
+    const state = getState();
+    console.log(state.projectIdHistory[project]);
+    const url = `/project-tracker/${state.projectIdHistory[project]}`;
     return fetch(url).then(response => {
         if (!response.ok) {
             const error = new Error(response.statusText)
@@ -26,10 +29,10 @@ export const fetchAllProjects = projects => dispatch => {
         return response.json();
     })
     .then(data => {
-        dispatch(fetchAllSuccess(data));
+        dispatch(fetchSingleSuccess(data));
     })
     .catch(error =>
-        dispatch(fetchAllError(error))
+        dispatch(fetchSingleError(error))
     );
 };
 
@@ -155,6 +158,7 @@ export const postError = (project, error) => ({
 });
 
 export const trackProject = project => dispatch => {
+    console.log(project);
 	return fetch('/project-tracker', {method: 'POST', body:JSON.stringify({project}),
 			headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },}).then(response => {
 		if (!response.ok) {

@@ -11,32 +11,40 @@ class ProjectDropDown extends React.Component {
 
 	fetchSingleProject(event) {
 		event.preventDefault();
-		this.props.dispatch(actions.fetchSingleProject(this.refs.input.value));
-	}
-
-	componentDidMount() {
-		this.props.dispatch(actions.fetchAllProjects()
-		);
+		this.props.dispatch(actions.fetchSingleProject(event.currentTarget.value));
 	}
 
 	render() {
 		
-		const projectDropDown = this.props.projectHistory.map((project, index) => {
+		const projectDropDown = this.props.projectNameHistory.map((project, index) => {
 			return <option value={index} key={index}>{project}</option>
 		});
 
+		const selectedToolsArray = this.props.selectedProjectTools.map((tool, index) => {
+			return <li key={index}>{tool}</li>
+		});
 
 		return (
-			<select className="project-dropdown" onChange={this.fetchSingleProject}>
-			{projectDropDown}
-			</select>
+			<div className="project-dashboard">
+				<select className="project-dropdown" onChange={this.fetchSingleProject}>
+				{projectDropDown}
+				</select>
+				<ul className="selected-project">
+				<p>{this.props.selectedProject}</p>
+				<p>{this.props.selectedProjectStory}</p>
+				<p>{selectedToolsArray}</p>
+				</ul>
+			</div>
 		)
 	}
 }
 
 const mapStateToProps = (state, props) => {
 	return {
-		projectHistory: state.projectHistory
+		projectNameHistory: state.projectNameHistory,
+		selectedProject: state.selectedProject,
+		selectedProjectStory: state.selectedProjectStory,
+		selectedProjectTools: state.selectedProjectTools
 	}
 }
 

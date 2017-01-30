@@ -33,6 +33,7 @@ app.get('/project-tracker', (req, res) => {
 });
 
 app.get('/project-tracker/:id', (req, res) => {
+  console.log(req.params.id);
   Project
     .findById(req.params.id)
     .exec()
@@ -62,7 +63,6 @@ app.put('/project-tracker/:id', jsonParser, (req, res) => {
 
 app.post('/project-tracker', jsonParser, function(req, res) {
     console.log(req.body);
-    console.error(req.body);
      Project
       .create({
       name: req.body.project,
