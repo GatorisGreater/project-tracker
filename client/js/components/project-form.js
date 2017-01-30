@@ -17,7 +17,7 @@ class ProjectForm extends React.Component {
 
     componentDidMount() {
         this.props.dispatch(
-            actions.fetchProjects()
+            actions.fetchAllProjects()
         );
     }  	
 

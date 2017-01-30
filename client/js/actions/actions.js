@@ -1,19 +1,52 @@
 import 'isomorphic-fetch';
 
-export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const fetchSuccess = (projects) => ({
-    type: FETCH_SUCCESS,
+export const PUT_STORY_SUCCESS = 'PUT_STORY_SUCCESS';
+export const putStorySuccess = (story) => ({
+    type: PUT_STORY_SUCCESS,
+    story
+});
+
+export const PUT_STORY_ERROR = 'PUT_STORY_ERROR';
+export const putStoryError = (story, error) => ({
+    type: PUT_STORY_ERROR,
+    story,
+    error
+});
+
+export const putStory = story => (dispatch, getState) => {
+    const state = getState();
+    const url = `/project-tracker/${state.currentProjectId}`
+    return fetch(url, {method:'PUT', body:JSON.stringify({story}), 
+        headers: {'Accept': 'application/json', 'Content-Type': 'application/json' },}).then(response => {
+      if (!response.ok){
+            const error = new Error(response.statusText)
+            error.response = response
+            throw error;
+        }   
+        return response.json();    
+    })
+    .then(data => {
+       dispatch(putStorySuccess(data))
+     })
+     .catch(error =>
+      dispatch(putStoryError(error))
+    );
+};
+
+export const FETCH_ALL_SUCCESS = 'FETCH_ALL_SUCCESS';
+export const fetchAllSuccess = (projects) => ({
+    type: FETCH_ALL_SUCCESS,
     projects
 });
 
-export const FETCH_ERROR = 'FETCH_ERROR';
-export const fetchError = (projects, error) => ({
-    type: FETCH_ERROR,
+export const FETCH_ALL_ERROR = 'FETCH_ALL_ERROR';
+export const fetchAllError = (projects, error) => ({
+    type: FETCH_ALL_ERROR,
     projects,
     error
 });
 
-export const fetchProjects = projects => dispatch => {
+export const fetchAllProjects = projects => dispatch => {
     const url = `/project-tracker`;
     return fetch(url).then(response => {
         if (!response.ok) {
@@ -24,10 +57,10 @@ export const fetchProjects = projects => dispatch => {
         return response.json();
     })
     .then(data => {
-        dispatch(fetchSuccess(data));
+        dispatch(fetchAllSuccess(data));
     })
     .catch(error =>
-        dispatch(fetchError(error))
+        dispatch(fetchAllError(error))
     );
 };
 
@@ -52,7 +85,6 @@ export const putTool = tool => (dispatch, getState) => {
     const url = `/project-tracker/${state.currentProjectId}`
     return fetch(url, {method:'PUT', body:JSON.stringify({tools}), 
         headers: {'Accept': 'application/json', 'Content-Type': 'application/json' },}).then(response => {
-        	console.log(response);
       if (!response.ok){
             const error = new Error(response.statusText)
             error.response = response
@@ -61,10 +93,6 @@ export const putTool = tool => (dispatch, getState) => {
         return response.json();    
     })
     .then(data => {
-    	console.log(data);
-    	// console.log(step);
-     //  	data.step = step;
-      	console.log(data);
        dispatch(putToolSuccess(data))
      })
      .catch(error =>
@@ -88,15 +116,13 @@ export const postError = (project, error) => ({
 export const trackProject = project => dispatch => {
 	return fetch('/project-tracker', {method: 'POST', body:JSON.stringify({project}),
 			headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },}).then(response => {
-		console.log(response);
 		if (!response.ok) {
 			const error = new Error(response.statusText)
 			error.response = response
 			throw error;
 		}
-		return response;
+		return response.json();
 	})
-	.then(response => response.json())
 	.then(data =>
 		dispatch(postSuccess(data))
 	)

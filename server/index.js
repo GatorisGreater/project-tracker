@@ -32,20 +32,20 @@ app.get('/project-tracker', (req, res) => {
       })
 });
 
-// WIP - PUT Endpoint
-
-// app.put('/project/:id', jsonParser, (req, res) => {
-//   console.log("req body steps " + req.body.steps);
-//   let updatedSteps = req.body.steps; 
-//   let update = {
-//     "steps": updatedSteps
-//   };  
-//   Goal
-//   .findByIdAndUpdate(req.params.id, {$set: update}, {new: true})
-//   .exec()
-//   .then(updatedGoal => res.status(201).json(updatedGoal))
-//   .catch(err => res.status(500).json({message: 'your update request was unsuccessful'}));
-// });
+app.put('/project-tracker/:id', jsonParser, (req, res) => {
+  let update = {};
+  let updateableFields = ['user', 'story', 'tools', 'status', 'improvements'];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      update[field] = req.body[field];
+    }
+  });
+  Project
+  .findByIdAndUpdate(req.params.id, {$set: update}, {new: true})
+  .exec()
+  .then(updatedProject => res.status(201).json(updatedProject))
+  .catch(err => res.status(500).json({message: 'your update request was unsuccessful'}));
+});
 
 app.post('/project-tracker', jsonParser, function(req, res) {
     console.log(req.body);

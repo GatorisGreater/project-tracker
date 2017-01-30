@@ -9,15 +9,6 @@ import store from './store';
 
 console.log(`Client running in ${process.env.NODE_ENV} mode`);
 
-// document.addEventListener('DOMContentLoad', () => 
-// 	ReactDOM.render(
-// 		<Provider store={store}>
-// 		<App />
-// 		</Provider>, 
-// 		document.getElementById('app')
-// 	)
-// );
-
 ReactDOM.render(
 		<Provider store={store}>
 		<App />
