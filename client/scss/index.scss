@@ -1,26 +1,20 @@
-//<footer> content here </footer>
-//footer {position: absolute; bottom: 0;}
-
-
 h1 {
-  text-align: center;
-}
+  text-align: center; }
 
-body {
-  background-color: lightblue;
-  background-image: url("../assets/img/3dpaper.jpg")
-  no-repeat center center fixed;
-    background-size: cover;
+html {
+  background: url(https://img.clipartfest.com/2619ebfbbe9aa7b9c2d2b0d705f9fa67_constructionzonejpg-construction-zone-clipart_1800-1103.jpeg) no-repeat center center fixed;
+  background-size: cover;
+  background-size: 100%;
 }
 
 #app {
+  position: relative;
   width: 500px;
-  height:800px;
-  margin-left: auto;
-  margin-right: auto;
-}
+  height: 800px;
+  left: 10px; 
+  bottom: -300px;
+ }
 
 .footer {
-position: absolute; bottom: 0;
-
-}
+  position: absolute;
+  bottom: 0; }
