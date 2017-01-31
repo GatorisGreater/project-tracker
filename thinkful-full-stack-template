@@ -2,19 +2,25 @@ h1 {
   text-align: center; }
 
 html {
-  background: url(https://img.clipartfest.com/2619ebfbbe9aa7b9c2d2b0d705f9fa67_constructionzonejpg-construction-zone-clipart_1800-1103.jpeg) no-repeat center center fixed;
+  background: url(http://worldartsme.com/images/safety-check-clipart-1.jpg) no-repeat center center fixed;
   background-size: cover;
   background-size: 100%; }
 
 #app {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 500px;
-  height: 800px;
-  left: 10px;
-  bottom: -300px; }
+  height: auto;
+  margin: auto;
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 10px; }
 
-.footer {
-  position: absolute;
-  bottom: 0; }
+img {
+  height: auto;
+  width: 500px; }
 
 /*# sourceMappingURL=thinkful-full-stack-template.map */
