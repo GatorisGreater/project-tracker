@@ -2,7 +2,9 @@ h1 {
   text-align: center; }
 
 html {
-  background: url(http://libraryofjuggling.com/JugglingGifs/3balltricks/reversecascadetwothrows.gif) no-repeat center center fixed;
+  background: url(../assets/img/juggling-ideas1.png);
+  /*  background: url(../assets/img/About-International-Jugglers-Day1.jpg);*/
+  /*background: url(http://libraryofjuggling.com/JugglingGifs/3balltricks/reversecascadetwothrows.gif) no-repeat center center fixed;*/
   background-size: cover;
   background-size: 100%; }
 
