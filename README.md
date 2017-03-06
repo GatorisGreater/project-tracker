@@ -1,13 +1,12 @@
-#Project Tracker
-https://github.com/GatorisGreater/project-tracker
+#Project Portfolio
+https://github.com/gatorisgreater/project-portfolio
 ##Description:  
-Working on a project? Maybe you'll want to remember it later on or maybe you won't...let's track it either way.
+You're out and about and suddenly an idea for a project pops up? Maybe it'll be worth revisiting later or maybe it won't...just in case let's add its basic elements to your portfolio in the cloud.
 
 ###Tech Stack:
-├── client      Client-side code
-│   ├── js      JavaScript (React/Redux)
-│   └── scss    SASS stylesheets
-├── server      Server-side code (Node/Express/MongoDB)
+  ├── client      Client-side code
+  │   ├── js      JavaScript (React/Redux)
+  ├── server      Server-side code (Node/Express/MongoDB)
 
 *MongoDB - server/models.js - noSQL database and schema. Collection: Projects. Documents: Project. Persistence storage. Implemented Mongoose for db querying.  
 
@@ -18,5 +17,5 @@ Working on a project? Maybe you'll want to remember it later on or maybe you won
 *Node - server/index.js - 
 
 ##
-Project Tracker is designed with bootcamp students and professional developers in mind. 
+Project Portfolio is designed with bootcamp students and professional developers in mind. 
 
