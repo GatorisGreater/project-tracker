@@ -1,21 +1,28 @@
-#Project Portfolio
-https://github.com/gatorisgreater/project-portfolio
-##Description:  
+
+# Project Portfolio
+
+### API 
+The API was built using Node with Express. GET/POST/PUT methods are supported.
+
+### Summary
 You're out and about and suddenly an idea for a project pops up? Maybe it'll be worth revisiting later or maybe it won't...just in case let's add its basic elements to your portfolio in the cloud.
 
-###Tech Stack:
-  ├── client      Client-side code
-  │   ├── js      JavaScript (React/Redux)
-  ├── server      Server-side code (Node/Express/MongoDB)
+### Screenshot
+![Project Portfolio](https://github.com/gatorisgreater/portfolio/blob/master/assets/project-portfolio.PNG "Project Portfolio")
 
-*MongoDB - server/models.js - noSQL database and schema. Collection: Projects. Documents: Project. Persistence storage. Implemented Mongoose for db querying.  
+### UX
+User tracks project name, UX, and technical tools in this app for future recall.
 
-*Express - node module. Local. GET/PUT/POST endpoints supported. Implements API layer.
+### Tech Stack
 
-*React/Redux - client/js - each React component lives in its own file.
+    ├── MongoDB: data persistence
+    ├── Express: API layer - GET/PUT/POST endpoints
+    ├── React: Front-End UI Structure and Behavior
+    ├── Redux: Front-End UI State Management and Logic    
+    ├── Node: server-side
 
-*Node - server/index.js - 
 
-##
-Project Portfolio is designed with bootcamp students and professional developers in mind. 
+### Requirements/Installation
+Deployed to heroku. Runs in the browser.
 
+## Project Portfolio is designed with bootcamp students and professional developers in mind. 
