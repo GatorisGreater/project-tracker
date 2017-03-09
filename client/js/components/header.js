@@ -8,7 +8,7 @@ function Header() {
     <div className="Header">
       <header>
         <h1>
-          Project Tracker
+          Project Portfolio
         </h1>
       </header>
     </div>
