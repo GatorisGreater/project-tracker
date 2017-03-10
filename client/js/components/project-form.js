@@ -23,10 +23,16 @@ class ProjectForm extends React.Component {
 
 	render() {
 
+		const toolArray = this.props.currentProjectTools.map((tool, index) => {
+			return <li key={index}>{tool}</li>
+		});		
+
 		return (
 			
 				<form className="project-form" onSubmit={this.trackProject}>
 					<p>{this.props.currentProject}</p>
+					<p>{this.props.currentProjectStory}</p>
+					<p>{toolArray}</p>
 					<label htmlFor="project-name">Project Name: </label>
 					<input type="text" id="project-name" placeholder="Amazing App Name" ref="input" required />
 					<input type="submit" name="submit project" value="Track Project"/>
@@ -38,6 +44,8 @@ class ProjectForm extends React.Component {
 const mapStateToProps = (state, props) => {
 	return {
 		currentProject: state.currentProject,
+		currentProjectStory: state.currentProjectStory,
+		currentProjectTools: state.currentProjectTools
 	}
 }
 

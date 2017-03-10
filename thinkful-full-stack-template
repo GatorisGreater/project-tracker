@@ -2,18 +2,14 @@ h1 {
   text-align: center; }
 
 html {
-  background: url(../assets/img/juggling-ideas1.png);
-  /*  background: url(../assets/img/About-International-Jugglers-Day1.jpg);*/
-  /*background: url(http://libraryofjuggling.com/JugglingGifs/3balltricks/reversecascadetwothrows.gif) no-repeat center center fixed;*/
-  background-size: cover;
-  background-size: 100%; }
+  background: url(http://alishaatallah.com/wp-content/uploads/2016/01/PersonalPortfolioBackground.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
-#app {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px;
+.app {
+  width: 60%;
   height: auto;
   margin: auto;
   padding: 10px;
@@ -21,9 +17,5 @@ html {
   border-style: solid;
   border-color: black;
   border-width: 10px; }
-
-img {
-  height: auto;
-  width: 500px; }
 
 /*# sourceMappingURL=thinkful-full-stack-template.map */

@@ -1,5 +1,14 @@
 import 'isomorphic-fetch';
 
+
+///////////// BACK TO LANDING PAGE
+
+export const BACK_TO_LANDING = 'BACK_TO_LANDING';
+export const backToLanding = () => ({
+    type: BACK_TO_LANDING
+});
+
+
 ///////////// READ/FETCH A SINGLE PROJECT OBJECT ACTIONS AND CREATORS
 
 export const FETCH_SINGLE_SUCCESS = 'FETCH_SINGLE_SUCCESS';

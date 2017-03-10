@@ -15,6 +15,10 @@ const initialState = {
 export const projectReducer = (state, action) => {
 	state = state || initialState;
 	switch(action.type) {
+	case actions.BACK_TO_LANDING :
+	  state = Object.assign({}, state, initialState);
+	  return state;
+	  break;	
 	case actions.POST_SUCCESS :
 	  let project = action.project.name;
 	  let id = action.project._id;

@@ -23,16 +23,9 @@ class StoryForm extends React.Component {
 				<label htmlFor="story-text">User Experience: </label>
 				<input type="text" id="story-text" placeholder="The User Experience As You See It" ref="input" />
 				<input type="submit" name="submit story details" value="Add Story"/>
-				<p>{this.props.currentProjectStory}</p>
 			</form>
 		)
 	}
 }
 
-const mapStateToProps = (state, props) => {
-	return {
-		currentProjectStory: state.currentProjectStory
-	}
-}
-
-export default connect (mapStateToProps)(StoryForm);
+export default connect ()(StoryForm);
