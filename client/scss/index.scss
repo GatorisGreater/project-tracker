@@ -2,28 +2,32 @@ h1 {
   text-align: center; }
 
 html { 
-  background: url(http://alishaatallah.com/wp-content/uploads/2016/01/PersonalPortfolioBackground.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-html { 
   background: url(http://images.stockunlimited.net/preview1300/tree-design-on-circuit-board-background_1646948.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: 'Source Code Pro', monospace;
+  color: #333333;
 }
 
+body {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+
+input, .project-dropdown, .home-button {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 700;
+}
 
 .app {
   width: 60%;
   height: auto;
   margin: auto;
-  padding: 10px;
-  background-color: white;
+  padding: 20px;
+  background-color: #ffffff;
   border-style: solid;
-  border-color: black;
+  border-color: #DEDCE7;
   border-width: 10px; }
