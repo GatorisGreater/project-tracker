@@ -23,9 +23,7 @@ function App(props) {
 		      	<ProjectDropDown />
 		      	<h3>Record New Project</h3>
 		    	<ProjectForm />
-		      	<StoryForm />
-		      	<ToolsForm />
-		    </div>
+	    </div>
 		)
   }
 
