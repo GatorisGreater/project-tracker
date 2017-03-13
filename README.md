@@ -8,7 +8,7 @@ The API was built using Node with Express. GET/POST/PUT methods are supported.
 ![Project Portfolio](https://github.com/gatorisgreater/portfolio/blob/master/assets/project-portfolio.PNG "Project Portfolio")
 
 ### UX
-User tracks project name, UX, and technical tools in this app for future recall.
+Keep track of your project name, UX, and technical tools in this app.
 
 ### Tech Stack
 
